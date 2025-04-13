@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry,model,tools"></script>
+    <title>Vite + Vue</title>
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow: hidden;
+    }
+    #app {
+      width: 100vw;
+      height: 100vh;
+    }
+    </style>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/App.vue"></script>
+    <!-- // 引用网络链接 -->
+    
+    <!-- <script>
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://map.qq.com/api/gljs?v=1.exp&callback=init&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=view,geometry,model,tools,visualization";
+      document.head.appendChild(script);
+    </script> -->
+  </body>
+</html>
