@@ -71,13 +71,18 @@ async function initMap() {
 
     const startPoint = new TMap.LatLng(31.8776295, 117.4794277, 0);
     const endPoint = new TMap.LatLng(31.8775292, 117.4794453, 0);
-    console.log(TMap.geometry.computeDistance([startPoint, endPoint]));
+    // const startPoint = new TMap.LatLng(31.8775575, 117.4794652, 0);
+    // const endPoint = new TMap.LatLng(31.8775929, 117.4795802, 0);
+    console.log('TMap distance: ', TMap.geometry.computeDistance([startPoint, endPoint]));
 
     const aaa = map.glLatLngToPosition(startPoint);
     const bbb = map.glLatLngToPosition(endPoint);
     const startPos = new THREE.Vector3(aaa.x, aaa.y, aaa.z);
     const endPos = new THREE.Vector3(bbb.x, bbb.y, bbb.z);
-    console.log('startPos.distanceTo(endPos): ', startPos.distanceTo(endPos));
+    console.log('THREE distance: : ', startPos.distanceTo(endPos));
+
+    const ratio = startPos.distanceTo(endPos) / TMap.geometry.computeDistance([startPoint, endPoint]);
+    console.log('ratio（THREE / TMap[m]）: ', ratio);
 
     // three.js自定义图层
     let glCustomLayer = null;
@@ -149,14 +154,14 @@ async function initMap() {
                     { lat: 31.838035, lon: 117.104174 }, // 西南
                     { lat: 31.838189, lon: 117.104174 }, // 东南（重复的坐标，这里应该是另一个坐标）
                 ],
-                [
-                    ...[
-                        [117.4794277, 31.8776295],
-                        [117.4794453, 31.8775292],
-                        [117.4797979, 31.8775839],
-                        [117.4797811, 31.8776724],
-                    ].map(v => ({ lat: v[1], lon: v[0] })),
-                ],
+                // [
+                //     ...[
+                //         [117.4794277, 31.8776295],
+                //         [117.4794453, 31.8775292],
+                //         [117.4797979, 31.8775839],
+                //         [117.4797811, 31.8776724],
+                //     ].map(v => ({ lat: v[1], lon: v[0] })),
+                // ],
             ];
 
             coordsArr.forEach(coords => createCube(coords, scene, group, map));
